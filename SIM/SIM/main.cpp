@@ -15,22 +15,24 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    string instruction;
-    int i = 0;
-    string instMem [1024];
-    int dataMem [1024];
-    ifstream myfile1 ("Test2.txt");
-    if(myfile1.is_open()){
-        while ( getline(myfile1, instMem[i]) )
-        {
-            cout << instMem[i] << endl;
-            i++;
-        }
-        myfile1.close();
-    }
-    else cout << "Unable to open file" << endl;
-    
-    SIM s (instMem, dataMem);
-    s.selectInst(i);
+//    string instruction;
+//    int i = 0;
+//    string instMem [1024];
+//    int dataMem [1024];
+//    ifstream myfile1 ("Test2.txt");
+//    if(myfile1.is_open()){
+//        while ( getline(myfile1, instMem[i]) )
+//        {
+//            cout << instMem[i] << endl;
+//            i++;
+//        }
+//        myfile1.close();
+//    }
+//    else cout << "Unable to open file" << endl;
+    string file;
+    cin >> file;
+    cout << file << endl;
+    SIM s (file);
+    s.selectInst();
     return 0;
 }

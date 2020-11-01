@@ -13,26 +13,25 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 using namespace std;
 
 class SIM{
 public:
-    SIM(string[], int[]);
+    SIM(string);
     ~SIM();
     
     void setInstrLine(int);
     
-    void selectInst(int);
+    void selectInst();
     void extractData();
-    
-    string getInstMem(int);
-    int getDataMem(int);
     
 private:
     string instrLine;
     string instMem[1024];
     int dataMem[1024];
     int d1, d2, d3;
+    int max;
 
 };
 #endif /* SIM_hpp */

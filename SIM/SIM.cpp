@@ -8,10 +8,19 @@
 
 #include "SIM.hpp"
 //Constructor: Sets current instruction to empty. Sets instruction memory array values to empty. Sets data memory array values to 0.
-SIM::SIM(string newInstMem[], int newDataMem[]){
+SIM::SIM(string file){
     instrLine = "";
-    for(int i = 0; i < 1024; i++)
-        instMem[i] = newInstMem[i];
+    max = 0;
+    ifstream myfile1 (file);
+    if(myfile1.is_open()){
+        while ( getline(myfile1, instMem[max]) )
+        {
+            cout << instMem[max] << endl;
+            max++;
+        }
+        myfile1.close();
+    }
+    else cout << "Unable to open file" << endl;
     for(int i = 0; i < 1024; i++)
         dataMem[i] = 0;
 }
@@ -23,7 +32,7 @@ void SIM::setInstrLine(int i){
     instrLine = instMem[i];
 }
 
-void SIM::selectInst(int max){
+void SIM::selectInst(){
     for(int i = 0; i < max; i++){
         setInstrLine(i);
         string instr = instrLine.substr(0,3);
@@ -108,12 +117,4 @@ void SIM::extractData(){
         /* To save from space at the end of string */
         temp = "";
     }
-}
-
-int SIM::getDataMem(int i){
-    return dataMem[i];
-}
-
-string SIM::getInstMem(int i){
-    return instMem[i];
 }
